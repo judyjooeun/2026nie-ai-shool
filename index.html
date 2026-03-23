@@ -480,35 +480,8 @@ textarea { resize: vertical; min-height: 80px; }
         <div class="tbl-wrap">
           <table>
             <thead><tr><th>신청자</th><th>과정</th><th>신청일</th><th>상태</th><th></th></tr></thead>
-            <tbody>
-              <tr>
-                <td><div class="td-name">김민준</div><div class="td-sub">삼성전자 · 개발팀</div></td>
-                <td><span class="badge bg-coral">AI 기초</span></td>
-                <td style="color:var(--ink3);font-size:12px;">01.15</td>
-                <td><span class="badge bg-amber">대기 중</span></td>
-                <td><button class="btn btn-sm btn-outline" onclick="go('admin-apply',null)">검토하기 →</button></td>
-              </tr>
-              <tr>
-                <td><div class="td-name">이서연</div><div class="td-sub">LG전자 · 기획팀</div></td>
-                <td><span class="badge bg-blue">머신러닝</span></td>
-                <td style="color:var(--ink3);font-size:12px;">01.14</td>
-                <td><span class="badge bg-amber">대기 중</span></td>
-                <td><button class="btn btn-sm btn-outline" onclick="go('admin-apply',null)">검토하기 →</button></td>
-              </tr>
-              <tr>
-                <td><div class="td-name">박도현</div><div class="td-sub">SK하이닉스 · 연구소</div></td>
-                <td><span class="badge bg-teal">ChatGPT</span></td>
-                <td style="color:var(--ink3);font-size:12px;">01.14</td>
-                <td><span class="badge bg-review">검토 중</span></td>
-                <td><button class="btn btn-sm btn-outline" onclick="go('admin-apply',null)">검토하기 →</button></td>
-              </tr>
-              <tr>
-                <td><div class="td-name">정수아</div><div class="td-sub">카카오 · 데이터팀</div></td>
-                <td><span class="badge bg-coral">AI 기초</span></td>
-                <td style="color:var(--ink3);font-size:12px;">01.13</td>
-                <td><span class="badge bg-teal">승인됨</span></td>
-                <td style="font-size:11px;color:var(--ink3);">처리 완료</td>
-              </tr>
+            <tbody id="dashApplyTbl">
+              <tr><td colspan="5" style="text-align:center;padding:24px;color:var(--ink3);font-size:13px;">⏳ 불러오는 중...</td></tr>
             </tbody>
           </table>
         </div>
@@ -703,61 +676,9 @@ textarea { resize: vertical; min-height: 80px; }
             </tr>
           </thead>
           <tbody id="applyTbl">
-            <tr data-status="waiting">
-              <td><input type="checkbox" class="chk aChk"></td>
-              <td><div class="td-name">김민준</div><div class="td-sub"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="711c181f1b041f3102101c02041f165f121e1c">[email&#160;protected]</a></div></td>
-              <td style="font-size:12px;color:var(--ink2);">삼성전자 / 개발팀</td>
-              <td><span class="badge bg-coral">🤖 AI 기초 입문</span></td>
-              <td style="font-size:12px;color:var(--ink3);">01.15</td>
-              <td><span class="badge bg-amber">검토 대기</span></td>
-              <td><div style="display:flex;gap:6px;"><button class="btn btn-sm btn-coral" onclick="approveRow(this)">승인</button><button class="btn btn-sm btn-ghost" onclick="rejectRow(this)">반려</button></div></td>
-            </tr>
-            <tr data-status="waiting">
-              <td><input type="checkbox" class="chk aChk"></td>
-              <td><div class="td-name">이서연</div><div class="td-sub"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="077462687e626869476b602964686a">[email&#160;protected]</a></div></td>
-              <td style="font-size:12px;color:var(--ink2);">LG전자 / 기획팀</td>
-              <td><span class="badge bg-blue">🧠 머신러닝 실무</span></td>
-              <td style="font-size:12px;color:var(--ink3);">01.14</td>
-              <td><span class="badge bg-amber">검토 대기</span></td>
-              <td><div style="display:flex;gap:6px;"><button class="btn btn-sm btn-coral" onclick="approveRow(this)">승인</button><button class="btn btn-sm btn-ghost" onclick="rejectRow(this)">반려</button></div></td>
-            </tr>
-            <tr data-status="waiting">
-              <td><input type="checkbox" class="chk aChk"></td>
-              <td><div class="td-name">박도현</div><div class="td-sub"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9bfff4f3e2eef5dbe8f0b5f8f4f6">[email&#160;protected]</a></div></td>
-              <td style="font-size:12px;color:var(--ink2);">SK하이닉스 / 연구소</td>
-              <td><span class="badge bg-teal">💬 ChatGPT 활용</span></td>
-              <td style="font-size:12px;color:var(--ink3);">01.14</td>
-              <td><span class="badge bg-review">검토 중</span></td>
-              <td><div style="display:flex;gap:6px;"><button class="btn btn-sm btn-coral" onclick="approveRow(this)">승인</button><button class="btn btn-sm btn-ghost" onclick="rejectRow(this)">반려</button></div></td>
-            </tr>
-            <tr data-status="approved">
-              <td><input type="checkbox" class="chk aChk"></td>
-              <td><div class="td-name">정수아</div><div class="td-sub"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8ffcfaeecfe4eee4eee0a1ece0e2">[email&#160;protected]</a></div></td>
-              <td style="font-size:12px;color:var(--ink2);">카카오 / 데이터팀</td>
-              <td><span class="badge bg-coral">🤖 AI 기초 입문</span></td>
-              <td style="font-size:12px;color:var(--ink3);">01.13</td>
-              <td><span class="badge bg-teal">승인됨</span></td>
-              <td style="font-size:12px;color:var(--ink3);">처리 완료</td>
-            </tr>
-            <tr data-status="approved">
-              <td><input type="checkbox" class="chk aChk"></td>
-              <td><div class="td-name">최우진</div><div class="td-sub"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d2a5bdbdb8bbbc92bcb3a4b7a0fcb1bdbf">[email&#160;protected]</a></div></td>
-              <td style="font-size:12px;color:var(--ink2);">네이버 / AI팀</td>
-              <td><span class="badge bg-amber">📊 데이터 분석</span></td>
-              <td style="font-size:12px;color:var(--ink3);">01.13</td>
-              <td><span class="badge bg-teal">승인됨</span></td>
-              <td style="font-size:12px;color:var(--ink3);">처리 완료</td>
-            </tr>
-            <tr data-status="rejected">
-              <td><input type="checkbox" class="chk aChk"></td>
-              <td><div class="td-name">한지민</div><div class="td-sub"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a6cccfcbcfc8e6cedfd3c8c2c7cf88c5c9cb">[email&#160;protected]</a></div></td>
-              <td style="font-size:12px;color:var(--ink2);">현대자동차 / 디자인팀</td>
-              <td><span class="badge bg-gray">🖼️ 생성형 AI 디자인</span></td>
-              <td style="font-size:12px;color:var(--ink3);">01.12</td>
-              <td><span style="font-size:11px;color:var(--ink3);">검토 완료</span></td>
-              <td><span class="badge" style="background:#fce8e8;color:#c0392b;">반려됨</span></td>
-              <td style="font-size:12px;color:var(--ink3);">처리 완료</td>
-            </tr>
+            <tr><td colspan="7" style="text-align:center;padding:32px;color:var(--ink3);font-size:13px;">
+              ⏳ 신청 데이터를 불러오는 중...
+            </td></tr>
           </tbody>
         </table>
       </div>
@@ -1617,9 +1538,7 @@ window.submitApply = async function() {
         <div style="display:flex;justify-content:space-between;align-items:center;"><span style="color:var(--ink3);">일시</span><strong>${selectedCourse.date} ${selectedCourse.time}</strong></div>
         <div style="display:flex;justify-content:space-between;align-items:center;"><span style="color:var(--ink3);">장소</span><strong>${selectedCourse.place}</strong></div>
       </div>
-      ${USE_DB
-        ? `<div style="background:var(--teal-light);border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:13px;color:var(--teal);font-weight:700;">✅ DB에 저장 완료</div>`
-        : `<div style="background:var(--amber-light);border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:13px;color:var(--amber);font-weight:700;">⚠️ 데모 모드 — Supabase 연결 시 실제 저장됩니다</div>`}
+      <div style="background:var(--teal-light);border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:13px;color:var(--teal);font-weight:700;">✅ 신청이 접수되었습니다. 관리자 검토 후 결과를 안내드립니다.</div>
       <div style="background:var(--bg);border-radius:10px;padding:14px 18px;margin-bottom:20px;display:flex;align-items:flex-start;gap:10px;">
         <span style="font-size:18px;flex-shrink:0;">💬</span>
         <div>
@@ -1634,21 +1553,114 @@ window.submitApply = async function() {
   toast('수강 신청이 완료되었습니다! ✓', '🎉');
 }
 
+// ─── DB에서 신청 목록 로드 ───
+window.loadApplications = async function() {
+  if (!USE_DB || !sbClient) return;
+  const { data, error } = await sbClient
+    .from('applications')
+    .select('*')
+    .order('applied_at', { ascending: false });
+  if (error) { console.error(error); return; }
+
+  allApplications = data || [];
+  renderApplyTable(allApplications);
+  renderDashApply(allApplications);
+  updateApplyStats(allApplications);
+};
+
+let allApplications = [];
+
+function renderApplyTable(rows) {
+  const tbody = document.getElementById('applyTbl');
+  if (!tbody) return;
+  if (rows.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:32px;color:var(--ink3);font-size:14px;">아직 수강 신청이 없습니다</td></tr>';
+    return;
+  }
+  const statusMap = { '검토대기':'<span class="badge bg-amber">검토 대기</span>', '승인':'<span class="badge bg-teal">승인됨</span>', '반려':'<span class="badge" style="background:#fce8e8;color:#c0392b;padding:4px 11px;border-radius:20px;font-size:12px;font-weight:700;">반려됨</span>' };
+  tbody.innerHTML = rows.map(r => {
+    const d = new Date(r.applied_at);
+    const dateStr = `${d.getMonth()+1}.${String(d.getDate()).padStart(2,'0')}`;
+    const isPending = r.status === '검토대기';
+    return `<tr data-id="${r.id}">
+      <td><input type="checkbox" class="chk aChk" data-id="${r.id}"></td>
+      <td><div class="td-name">${r.staff_name}</div><div class="td-sub">${r.department||''} · ${r.position||''}</div></td>
+      <td style="font-size:13px;color:var(--ink2);">${r.department||'-'}</td>
+      <td><span class="badge bg-coral" style="font-size:12px;">${r.course_name||'-'}</span></td>
+      <td style="font-size:13px;color:var(--ink3);">${dateStr}</td>
+      <td>${statusMap[r.status] || statusMap['검토대기']}</td>
+      <td>${isPending
+        ? `<div style="display:flex;gap:6px;"><button class="btn btn-sm btn-coral" onclick="approveRow(this,${r.id})">승인</button><button class="btn btn-sm btn-ghost" onclick="rejectRow(this,${r.id})">반려</button></div>`
+        : `<span style="font-size:12px;color:var(--ink3);">처리 완료</span>`
+      }</td>
+    </tr>`;
+  }).join('');
+}
+
+function renderDashApply(rows) {
+  const tbody = document.getElementById('dashApplyTbl');
+  if (!tbody) return;
+  const recent = rows.slice(0, 5);
+  if (recent.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:24px;color:var(--ink3);font-size:13px;">아직 수강 신청이 없습니다</td></tr>';
+    return;
+  }
+  const statusMap = { '검토대기':'<span class="badge bg-amber">대기 중</span>', '승인':'<span class="badge bg-teal">승인됨</span>', '반려':'<span class="badge" style="background:#fce8e8;color:#c0392b;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;">반려됨</span>' };
+  const d2 = (r) => { const d=new Date(r.applied_at); return `${d.getMonth()+1}.${String(d.getDate()).padStart(2,'0')}`; };
+  tbody.innerHTML = recent.map(r => `
+    <tr>
+      <td><div class="td-name">${r.staff_name}</div><div class="td-sub">${r.department||''}</div></td>
+      <td><span class="badge bg-coral" style="font-size:11px;">${(r.course_name||'').slice(0,8)}</span></td>
+      <td style="color:var(--ink3);font-size:12px;">${d2(r)}</td>
+      <td>${statusMap[r.status]||statusMap['검토대기']}</td>
+      <td><button class="btn btn-sm btn-outline" onclick="go('admin-apply',null)">검토하기 →</button></td>
+    </tr>`).join('');
+}
+
+function updateApplyStats(rows) {
+  const pending = rows.filter(r => r.status === '검토대기').length;
+  // 대기 stat 카드 업데이트
+  const statEl = document.querySelector('.stat-card .stat-value');
+  // 신청 대기 카드 (3번째)
+  const cards = document.querySelectorAll('.stat-value');
+  if (cards[2]) cards[2].textContent = pending;
+  // 필터 탭 숫자 업데이트
+  const total = rows.length;
+  const approved = rows.filter(r=>r.status==='승인').length;
+  const rejected = rows.filter(r=>r.status==='반려').length;
+  const tabs = document.querySelectorAll('#page-admin-apply .ftab');
+  if (tabs[0]) tabs[0].textContent = `전체 (${total})`;
+  if (tabs[1]) tabs[1].textContent = `검토 대기 (${pending})`;
+  if (tabs[2]) tabs[2].textContent = `승인됨 (${approved})`;
+  if (tabs[3]) tabs[3].textContent = `반려 (${rejected})`;
+}
+
 // ─── APPROVE / REJECT ───
-window.approveRow = function(btn) {
+window.approveRow = async function(btn, id) {
   const tr = btn.closest('tr');
-  const badge = tr.querySelector('[class*="badge"]');
-  badge.className = 'badge bg-teal'; badge.textContent = '승인됨';
+  if (USE_DB && sbClient && id) {
+    btn.disabled = true; btn.textContent = '처리 중...';
+    const { error } = await sbClient.from('applications').update({ status: '승인' }).eq('id', id);
+    if (error) { toast('오류: ' + error.message, '❌'); btn.disabled=false; btn.textContent='승인'; return; }
+  }
+  const badge = tr.querySelector('[class*="badge bg-amber"],[class*="badge bg-review"]');
+  if (badge) { badge.className = 'badge bg-teal'; badge.textContent = '승인됨'; }
   tr.querySelector('td:last-child').innerHTML = '<span style="font-size:12px;color:var(--ink3);">처리 완료</span>';
   toast('승인 처리되었습니다 ✓','✅');
+  if (USE_DB) setTimeout(loadApplications, 500);
 }
-window.rejectRow = function(btn) {
+window.rejectRow = async function(btn, id) {
   const tr = btn.closest('tr');
+  if (USE_DB && sbClient && id) {
+    btn.disabled = true;
+    const { error } = await sbClient.from('applications').update({ status: '반려' }).eq('id', id);
+    if (error) { toast('오류: ' + error.message, '❌'); btn.disabled=false; return; }
+  }
   const badge = tr.querySelector('[class*="badge"]');
-  badge.className = 'badge'; badge.style.cssText = 'background:#fce8e8;color:#c0392b;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;';
-  badge.textContent = '반려됨';
+  if (badge) { badge.className='badge'; badge.style.cssText='background:#fce8e8;color:#c0392b;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;'; badge.textContent='반려됨'; }
   tr.querySelector('td:last-child').innerHTML = '<span style="font-size:12px;color:var(--ink3);">처리 완료</span>';
   toast('반려 처리되었습니다','ℹ️');
+  if (USE_DB) setTimeout(loadApplications, 500);
 }
 window.bulkApprove = function() {
   let cnt = 0;
@@ -1669,8 +1681,8 @@ window.filterApply = function(btn, status) { btn.closest('.filter-tabs').querySe
 // ════════════════════════════════════
 // ★ SUPABASE 설정 — 아래 두 줄만 교체하세요
 // ════════════════════════════════════
-const SUPABASE_URL = 'YOUR_SUPABASE_URL';   // 예: https://abcdef.supabase.co
-const SUPABASE_KEY = 'YOUR_SUPABASE_ANON_KEY'; // Supabase → Settings → API → anon public
+const SUPABASE_URL = 'https://wtgdqubtennzpnehcmju.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_TYZmzfBDj8MYjx38Qo4iQA_eJa9clNx';
 
 // Supabase 연결 여부 자동 판단
 const USE_DB = SUPABASE_URL !== 'YOUR_SUPABASE_URL';
@@ -1680,7 +1692,7 @@ if (USE_DB) {
   sbScript.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
   sbScript.onload = () => {
     sbClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-    loadCoursesFromDB();
+    loadApplications();
   };
   document.head.appendChild(sbScript);
 }
@@ -1932,6 +1944,7 @@ window.go = function(pageId, btn) {
   if (pageId==='stu-home') renderStuHomeCourses();
   if (pageId==='stu-status') renderStuStatus();
   if (pageId==='stu-kakao') renderKakaoPage();
+  if (pageId==='admin-apply' || pageId==='admin-dash') loadApplications();
 };
 
 window.topCtaAction = function() {
